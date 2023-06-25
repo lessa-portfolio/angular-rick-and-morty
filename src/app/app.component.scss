@@ -2,13 +2,16 @@
   max-width: 285px;
 }
 
+.footer-links {
+  width: 100%;
+  max-width: 288px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .author {
   color: #CEE5AD;
   font-size: 12px;
 }
 
-.icon {
-  width: 24px;
-  height: 24px;
-  color: rgba(206, 229, 173, 1);
-}
+
