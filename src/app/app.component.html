@@ -1,14 +1,49 @@
-<div class="header__logo-container">
-  <img class="header__logo" src="assets/logo.png" alt="logo rick and morty">
+<div class="d-flex-center w-100">
+  <img class="header__logo w-100" src="assets/logo.png" alt="logo rick and morty">
 </div>
 
-<p *ngFor="let caracter of caracters | async">{{ caracter.name }}</p>
+<div class="d-flex-center">
+  <app-search-input class="w-100"></app-search-input>
+  <app-small-button>
+    <div class="d-flex-center icon">oi</div>
+  </app-small-button>
+</div>
 
-<br>
+<div class="d-flex-center">
+  <p class="w-100">results:</p>
+  <p>total: 101</p>
+</div>
 
-<app-button></app-button>
-<app-small-button></app-small-button>
+<!-- <p *ngFor="let caracter of caracters | async">{{ caracter.name }}</p> -->
+
 <app-card></app-card>
 <app-dropdown></app-dropdown>
 <app-drawer></app-drawer>
-<app-search-input></app-search-input>
+
+<br>
+<app-button></app-button>
+<br>
+<footer class="d-flex-center gap-16 d-flex-column">
+  <div class="d-flex-center gap-32">
+
+    <a href="https://www.linkedin.com/in/lucaslessa7/">
+      <app-small-button>
+        <div class="d-flex-center icon">oi</div>
+      </app-small-button>
+    </a>
+
+    <app-small-button>
+      <div class="d-flex-center icon">oi</div>
+    </app-small-button>
+
+    <app-small-button>
+      <div class="d-flex-center icon">oi</div>
+    </app-small-button>
+
+    <app-small-button>
+      <div class="d-flex-center icon">oi</div>
+    </app-small-button>
+  </div>
+
+  <span class="author">created by: @lucas.lessa14</span>
+</footer>

@@ -13,3 +13,23 @@ body {
 p {
   color: #fff;
 }
+
+.d-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.d-flex-column {
+  flex-direction: column;
+}
+
+.w-100 { width: 100% }
+
+.gap-4 { gap: 4px }
+.gap-8 { gap: 8px }
+.gap-16 { gap: 16px }
+.gap-24 { gap: 24px }
+.gap-32 { gap: 32px }
+
+.p-12 { padding: 12px }
