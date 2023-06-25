@@ -2,6 +2,10 @@
   <img class="header__logo" src="assets/logo.png" alt="logo rick and morty">
 </div>
 
+<p *ngFor="let caracter of caracters | async">{{ caracter.name }}</p>
+
+<br>
+
 <app-button></app-button>
 <app-small-button></app-small-button>
 <app-card></app-card>
