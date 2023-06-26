@@ -24,6 +24,11 @@ p {
   flex-direction: column;
 }
 
+.d-flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 .w-100 { width: 100% }
 
 .gap-4 { gap: 4px }
@@ -35,7 +40,10 @@ p {
 .p-12 { padding: 12px }
 
 
+.mt-16 { margin-top: 16px }
 .mt-24 { margin-top: 24px }
+
+.mb-16 { margin-bottom: 16px }
 .mb-24 { margin-bottom: 24px }
 
 .icon {
