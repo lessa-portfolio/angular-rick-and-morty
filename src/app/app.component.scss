@@ -1,16 +1,41 @@
+#main-container {
+  max-width: 960px;
+  margin: auto;
+
+  .control-painel {
+    max-width: 600px;
+  }
+}
+
 .header__logo {
   max-width: 285px;
 }
 
+.btn-load-more {
+  max-width: 440px;
+}
+
 .footer-links {
-  width: 100%;
   max-width: 288px;
-  display: flex;
-  justify-content: space-between;
 }
 
 .card-container {
   width: calc(50% - 8px);
+}
+
+@media screen and (min-width: 768px) {
+  .card-container {
+    width: calc(33.33% - 12px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card-container {
+    width: calc(25% - 24px);
+    // min-width: 216px;
+  }
+
+  section { gap: 32px }
 }
 
 .author {

@@ -17,3 +17,9 @@
 
   span { font-size: 10px }
 }
+
+@media screen and (min-width: 1024px) {
+  .card-container {
+    span { font-size: 12px }
+  }
+}

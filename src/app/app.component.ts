@@ -1,5 +1,5 @@
-import { Observable, map } from 'rxjs';
-import { Result } from './interfaces/caracters.interfaces';
+import { Observable, map, tap } from 'rxjs';
+import { CaractersAPIResponse, Info, Result } from './interfaces/caracters.interfaces';
 import { RickAndMortyService } from './services/rick-and-morty.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,19 +8,29 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  // @ts-ignore
-  public caracters: Observable<Result[]>;
+export class AppComponent {
 
-  constructor(private service: RickAndMortyService) { }
+  public response: Observable<CaractersAPIResponse>;
 
-  ngOnInit(): void {
-    this.getCaracters();
-  }
+  // public info: Observable<Info>;
+  // public caracters: Observable<Result[]>;
 
-  private getCaracters() {
-    this.caracters = this.service.getCharacters().pipe(
-      map(response => response.results)
-    )
+  // public info: Info;
+  // public caracters: Result[] = [];
+
+  constructor(private service: RickAndMortyService) {
+    this.response = this.service.getCharacters();
+    // this.service.getCharacters().pipe(
+    //   tap(response => this.info = response.info),
+    //   tap(response => this.caracters = response.results)
+    // );
+
+    // this.caracters = this.service.getCharacters().pipe(
+    //   map(response => response.results)
+    // );
+
+    // this.info = this.service.getCharacters().pipe(
+    //   map(response => response.info)
+    // );
   }
 }
