@@ -14,21 +14,25 @@ p {
   color: #fff;
 }
 
+.d-flex { display: flex }
+
 .d-flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.d-flex-column {
-  flex-direction: column;
-}
+.d-flex-column { flex-direction: column }
+.d-flex-wrap { flex-wrap: wrap }
 
 .d-flex-space-between {
   display: flex;
   justify-content: space-between;
 }
 
+.d-block { display: block }
+
+.w-50 { width: 50% }
 .w-100 { width: 100% }
 
 .gap-4 { gap: 4px }
@@ -50,3 +54,5 @@ p {
   width: 24px;
   height: 24px;
 }
+
+.text-center { text-align: center }
