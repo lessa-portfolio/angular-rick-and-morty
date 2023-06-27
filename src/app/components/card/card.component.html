@@ -1,1 +1,8 @@
-<p>card works!</p>
+<div class="card-container d-flex-center d-flex-column gap-8 w-100">
+  <img class="w-100" [src]="caracter.image" [alt]="caracter.name">
+  <p class="caracter-name text-center">{{ caracter.name }}</p>
+  <span class="text-center">location: {{ caracter.location.name  }}</span>
+  <span class="text-center">souce: {{ caracter.origin.name  }}</span>
+  <span class="text-center">species: {{ caracter.species  }}</span>
+  <span class="text-center">gender: {{ caracter.gender  }}</span>
+</div>

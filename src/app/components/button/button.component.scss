@@ -1,0 +1,15 @@
+.btn {
+  height: 48px;
+  width: 100%;
+  padding: 12px auto;
+  border-radius: 60px;
+  font-size: 20px;
+  cursor: pointer;
+
+  &-primary {
+    color: #071618;
+    border: 2px solid #40945D;
+    box-shadow: 0px 0px 8px 0px #4E823A;
+    background: linear-gradient(142deg, #8ABF77 0%, #BECF6B 46.05%, #63BC44 100%, #8ABF77 100%);
+  }
+}
