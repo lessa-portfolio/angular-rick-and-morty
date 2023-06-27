@@ -1,14 +1,63 @@
-<div class="header__logo-container">
-  <img class="header__logo" src="assets/logo.png" alt="logo rick and morty">
+<div id="main-container" class="d-flex d-flex-center d-flex-column w-100 m-auto">
+  <header class="w-100">
+    <div class="d-flex-center w-100">
+      <img class="header__logo w-100" src="assets/logo.png" alt="logo rick and morty">
+    </div>
+
+    <div class="d-flex-center w-100 gap-8 m-auto control-painel">
+      <app-search-input class="w-100"></app-search-input>
+      <app-small-button>
+        <img class="icon" src="assets/icons/filter.svg" alt="filter icon">
+      </app-small-button>
+    </div>
+
+    <div class="d-flex-space-between w-100 mt-16 mb-16">
+      <p>results:</p>
+      <p>total: {{ (response | async)?.info?.count }}</p>
+    </div>
+  </header>
+
+  <section class="d-flex d-flex-center d-flex-wrap gap-16">
+    <div class="card-container" *ngFor="let caracter of (response | async)?.results">
+      <app-card class="d-block w-100" [caracter]="caracter"></app-card>
+    </div>
+
+    <div class="d-flex d-flex-center mt-24 mb-24 w-100">
+      <app-button class="btn-load-more w-100">load more cards</app-button>
+    </div>
+  </section>
+
+  <footer class="d-flex-center d-flex-column w-100 gap-16">
+    <div class="d-flex d-flex-space-between w-100 footer-links">
+
+      <a href="https://www.linkedin.com/in/lucaslessa7/" target="_blank">
+        <app-small-button>
+          <img class="icon" src="assets/icons/linkedin.svg" alt="linkedin icon">
+        </app-small-button>
+      </a>
+
+      <a href="https://www.behance.net/lucaslessa2" target="_blank">
+        <app-small-button>
+          <img class="icon" src="assets/icons/behance.svg" alt="behance icon">
+        </app-small-button>
+      </a>
+
+      <a href="https://github.com/lessa-portfolio" target="_blank">
+        <app-small-button>
+          <img class="icon" src="assets/icons/github.svg" alt="github icon">
+        </app-small-button>
+      </a>
+
+      <a href="https://www.instagram.com/lucas.lessa14/" target="_blank">
+        <app-small-button>
+          <img class="icon" src="assets/icons/instagram.svg" alt="instagram icon">
+        </app-small-button>
+      </a>
+    </div>
+
+    <span class="author">created by: <a href="https://www.instagram.com/lucas.lessa14/" target="_blank">@lucas.lessa14</a></span>
+  </footer>
 </div>
 
-<p *ngFor="let caracter of caracters | async">{{ caracter.name }}</p>
-
-<br>
-
-<app-button></app-button>
-<app-small-button></app-small-button>
-<app-card></app-card>
-<app-dropdown></app-dropdown>
-<app-drawer></app-drawer>
-<app-search-input></app-search-input>
+<!-- <app-dropdown></app-dropdown> -->
+<!-- <app-drawer></app-drawer> -->
