@@ -1,36 +1,92 @@
+import { BehaviorSubject, Observable, tap, scan } from 'rxjs';
+import { BackendService } from './backend.service';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { CaractersAPIResponse } from '../interfaces/caracters.interfaces';
+import { Info, Result } from '../interfaces/caracters.interfaces';
+import { newFilter, newInfo } from '../shared/filter.factory';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RickAndMortyService {
 
-  private readonly URL = 'https://rickandmortyapi.com/api/character/';
+  private _name = new BehaviorSubject<string[]>([]);
+  private _status = new BehaviorSubject<string[]>([]);
+  private _species = new BehaviorSubject<string[]>([]);
+  private _gender = new BehaviorSubject<string[]>([]);
+  private _type  = new BehaviorSubject<string[]>([]);
 
-  constructor(private http: HttpClient) { }
+  private _info = new BehaviorSubject<Info>(newInfo());
+  private _results = new BehaviorSubject<Result[]>([]);
 
-  public getCharacters(names?: string[], statuses?: string[], species?: string[], types?: string[], genders?: string[]): Observable<CaractersAPIResponse> {
-    let params = new HttpParams();
+  constructor(private backendService: BackendService) {
+    this.getInitialsData();
+  }
 
-    if (names && names.length > 0) {
-      params = params.set('name', names.join(','));
-    }
-    if (statuses && statuses.length > 0) {
-      params = params.set('status', statuses.join(','));
-    }
-    if (species && species.length > 0) {
-      params = params.set('species', species.join(','));
-    }
-    if (types && types.length > 0) {
-      params = params.set('type', types.join(','));
-    }
-    if (genders && genders.length > 0) {
-      params = params.set('gender', genders.join(','));
-    }
+  //  ==========  methods  ==========  //
+  public getInitialsData() {
+    this.backendService.getCharacters(newFilter()).subscribe(response => {
+      this._info.next(response.info)
+      this._results.next(response.results)
+    });
+  }
 
-    return this.http.get<CaractersAPIResponse>(this.URL, { params: params });
+  public loadMoreCharacteres() {
+    this.backendService.getNextPageOfCharacteres(this._info.value.next).subscribe(response => {
+      const currentResults = this._results.getValue();
+      const newResults = currentResults.concat(response.results);
+
+      this._results.next(newResults);
+      this._info.next(response.info);
+    });
+  }
+
+  //  ==========  getters  ==========  //
+  get name$(): Observable<string[]> {
+    return this._name.asObservable();
+  }
+
+  get status$(): Observable<string[]> {
+    return this._status.asObservable();
+  }
+
+  get species$(): Observable<string[]> {
+    return this._species.asObservable();
+  }
+
+  get gender$(): Observable<string[]> {
+    return this._gender.asObservable();
+  }
+
+  get type$(): Observable<string[]> {
+    return this._type.asObservable();
+  }
+
+  get info$(): Observable<Info> {
+    return this._info.asObservable();
+  }
+
+  get results$(): Observable<Result[]> {
+    return this._results.asObservable();
+  }
+
+  //  ==========  setters  ==========  //
+  set name(values: string[]) {
+    this._name.next(values);
+  }
+
+  set status(values: string[]) {
+    this._status.next(values);
+  }
+
+  set species(values: string[]) {
+    this._species.next(values);
+  }
+
+  set gender(values: string[]) {
+    this._gender.next(values);
+  }
+
+  set type(values: string[]) {
+    this._type.next(values);
   }
 }

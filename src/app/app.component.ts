@@ -1,7 +1,9 @@
-import { Observable, map, tap } from 'rxjs';
-import { CaractersAPIResponse, Info, Result } from './interfaces/caracters.interfaces';
+import { Observable } from 'rxjs';
+import { Info, Result } from './interfaces/caracters.interfaces';
 import { RickAndMortyService } from './services/rick-and-morty.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { newFilter } from './shared/filter.factory';
+import { Filter } from './interfaces/filters.interface';
 
 @Component({
   selector: 'app-root',
@@ -9,28 +11,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  public filters: Filter = newFilter();
 
-  public response: Observable<CaractersAPIResponse>;
+  public info$: Observable<Info>;
+  public characters$: Observable<Result[]>;
 
-  // public info: Observable<Info>;
-  // public caracters: Observable<Result[]>;
+  constructor(private rickAndMortyService: RickAndMortyService) {
+    this.info$ = this.rickAndMortyService.info$;
+    this.characters$ = this.rickAndMortyService.results$;
+  }
 
-  // public info: Info;
-  // public caracters: Result[] = [];
-
-  constructor(private service: RickAndMortyService) {
-    this.response = this.service.getCharacters();
-    // this.service.getCharacters().pipe(
-    //   tap(response => this.info = response.info),
-    //   tap(response => this.caracters = response.results)
-    // );
-
-    // this.caracters = this.service.getCharacters().pipe(
-    //   map(response => response.results)
-    // );
-
-    // this.info = this.service.getCharacters().pipe(
-    //   map(response => response.info)
-    // );
+  public clickOnLoadMoreButton() {
+    this.rickAndMortyService.loadMoreCharacteres();
   }
 }
