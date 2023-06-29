@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable, debounceTime, tap } from 'rxjs';
+import { debounceTime, tap } from 'rxjs';
 
 @Component({
   selector: 'app-search-input',
@@ -8,9 +8,17 @@ import { Observable, debounceTime, tap } from 'rxjs';
   styleUrls: ['./search-input.component.scss']
 })
 export class SearchInputComponent {
+  @Output() searchBy = new EventEmitter<string>();
+
   public search = new FormControl();
-  public $search = this.search.valueChanges.pipe(
-    debounceTime(500),
-    tap(value => console.log('Fluxo inicial ', value)),
-  );
+
+  constructor() {
+    this.search.valueChanges.pipe(
+      debounceTime(500)
+    ).subscribe(value => this.newSeach(value));
+  }
+
+  private newSeach(value: string): void {
+    this.searchBy.emit(value);
+  }
 }

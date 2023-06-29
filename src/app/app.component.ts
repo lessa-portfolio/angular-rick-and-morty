@@ -24,4 +24,9 @@ export class AppComponent {
   public clickOnLoadMoreButton() {
     this.rickAndMortyService.loadMoreCharacteres();
   }
+
+  public handleSearchInput(value: string) {
+    this.rickAndMortyService.gender = ['unknown'];
+    this.rickAndMortyService.name = [value];
+  }
 }

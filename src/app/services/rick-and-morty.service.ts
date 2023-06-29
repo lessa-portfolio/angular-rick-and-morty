@@ -1,13 +1,16 @@
-import { BehaviorSubject, Observable, tap, scan } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { BackendService } from './backend.service';
 import { Injectable } from '@angular/core';
 import { Info, Result } from '../interfaces/caracters.interfaces';
 import { newFilter, newInfo } from '../shared/filter.factory';
+import { Filter } from '../interfaces/filters.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RickAndMortyService {
+  private _info = new BehaviorSubject<Info>(newInfo());
+  private _results = new BehaviorSubject<Result[]>([]);
 
   private _name = new BehaviorSubject<string[]>([]);
   private _status = new BehaviorSubject<string[]>([]);
@@ -15,29 +18,48 @@ export class RickAndMortyService {
   private _gender = new BehaviorSubject<string[]>([]);
   private _type  = new BehaviorSubject<string[]>([]);
 
-  private _info = new BehaviorSubject<Info>(newInfo());
-  private _results = new BehaviorSubject<Result[]>([]);
-
   constructor(private backendService: BackendService) {
-    this.getInitialsData();
+    this.name$.subscribe(() => this.getInitialsData(this.getFilters()));
+
+    this.getInitialsData(newFilter());
   }
 
   //  ==========  methods  ==========  //
-  public getInitialsData() {
-    this.backendService.getCharacters(newFilter()).subscribe(response => {
+  public getInitialsData(filters: Filter) {
+    this.backendService.getCharacters(filters).subscribe(response => {
       this._info.next(response.info)
       this._results.next(response.results)
     });
   }
 
   public loadMoreCharacteres() {
-    this.backendService.getNextPageOfCharacteres(this._info.value.next).subscribe(response => {
+    this.backendService.getNextPageOfCharacteres(this._info.value.next, this.getFilters()).subscribe(response => {
       const currentResults = this._results.getValue();
       const newResults = currentResults.concat(response.results);
 
       this._results.next(newResults);
       this._info.next(response.info);
     });
+  }
+
+  public getFilters(): Filter {
+    return {
+      name: this._name.value,
+      status: this._status.value,
+      species: this._species.value,
+      gender: this._gender.value,
+      type: this._type.value,
+      location: [],
+      origin: []
+    }
+  }
+
+  public clearFilters(): void {
+    this._name.next([]);
+    this._status.next([]);
+    this._species.next([]);
+    this._gender.next([]);
+    this._type.next([]);
   }
 
   //  ==========  getters  ==========  //
