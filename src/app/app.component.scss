@@ -1,48 +1,94 @@
-#main-container {
-  max-width: 960px;
-  margin: auto;
+header {
+  height: 240px;
 
-  .control-painel {
-    max-width: 600px;
+  .header__logo {
+    height: 160px;
+    max-width: 285px;
   }
-}
 
-.header__logo {
-  max-width: 285px;
-}
+  .filters-bar {
+    height: 80px;
 
-.btn-load-more {
-  max-width: 440px;
-}
+    &__fixed {
+      background-image: url('../assets/universe.png');
+      box-shadow: 0px 0px 8px 0px #4E823A;
+      height: 80px;
 
-.footer-links {
-  max-width: 288px;
+      position: fixed;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+    }
+
+    &__content {
+      transition: top 0.5s ease-in;
+    }
+
+    &__logo { display: none }
+  }
 }
 
 .card-container {
   width: calc(50% - 8px);
 }
 
+// Responsive for Tablets and Desktops/Laptops (not mobile)
 @media screen and (min-width: 768px) {
   .card-container {
-    width: calc(33.33% - 12px);
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .card-container {
     width: calc(25% - 24px);
-    // min-width: 216px;
   }
 
   section { gap: 32px }
+
+  .filters-bar {
+    width: 100%;
+
+    app-search-input { max-width: 540px }
+
+    &__fixed {
+      top: 0 !important;
+      bottom: auto !important;
+      z-index: 999;
+
+      .filters-bar__logo {
+        display: block;
+        width: auto;
+        height: 48px;
+      }
+
+      .filters-bar__content {
+        justify-content: space-between;
+        max-width: 960px;
+        padding: 12px 16px;
+      }
+
+      app-search-input { max-width: 400px }
+    }
+  }
 }
 
-.author {
-  color: #CEE5AD;
-  font-size: 12px;
-
-  a { color: #CEE5AD }
+#main-container {
+  max-width: 960px;
+  margin: auto;
 }
 
+.btn-load-more {
+  max-width: 440px;
+}
 
+footer {
+  padding: 0 16px;
+
+  .contact {
+    max-width: 288px;
+
+    &__author {
+      color: #CEE5AD;
+      font-size: 12px;
+
+      a { color: #CEE5AD }
+    }
+  }
+}
