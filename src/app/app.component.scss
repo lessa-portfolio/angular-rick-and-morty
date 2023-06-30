@@ -54,7 +54,6 @@ header {
 
       .filters-bar__logo {
         display: block;
-        width: auto;
         height: 48px;
       }
 
@@ -71,6 +70,7 @@ header {
 
 #main-container {
   max-width: 960px;
+  padding: 0 16px;
   margin: auto;
 }
 
