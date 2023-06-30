@@ -6,38 +6,31 @@
 }
 
 body {
-  // background-image: url('assets/universe.png'), linear-gradient(to bottom, #000000, #000000);
-  // background-repeat: no-repeat;
-  // background-size: 100%, 100vh;
-  // background-position: center top;
-  // background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
-  //                   url('assets/universe.png'),
-  //                   linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-  // background-repeat: repeat-y;
-  // background-size: auto, auto, auto;
-  // background-position: center, center, center;
-  // background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
-  //                   url('./assets/universe.png'),
-  //                   linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
-  //                   linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
-  //                   linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
-  // background-repeat: repeat, repeat-x, repeat, repeat-y, repeat;
-  // background-size: auto, auto, auto, auto, auto;
-  // background-position: center, center, center, center, center;
   background-image: url('assets/universe.png');
-  background-size: cover;
+  background-size: auto;
   background-position: center;
-  padding: 0 16px 80px 16px;
+  background-repeat: repeat;
+  padding-bottom: 96px;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    padding-bottom: 32px;
+  }
+  .card-container {
+    width: calc(33.33% - 12px);
+  }
 }
 
 p {
   color: #fff;
 }
 
+.d-block { display: block }
+.d-none { display: none }
 .d-flex { display: flex }
 
 .d-flex-center {
-  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -45,12 +38,8 @@ p {
 .d-flex-column { flex-direction: column }
 .d-flex-wrap { flex-wrap: wrap }
 
-.d-flex-space-between {
-  display: flex;
-  justify-content: space-between;
-}
+.d-flex-space-between { justify-content: space-between }
 
-.d-block { display: block }
 
 .w-50 { width: 50% }
 .w-100 { width: 100% }
@@ -62,6 +51,7 @@ p {
 .gap-32 { gap: 32px }
 
 .p-12 { padding: 12px }
+.p-16 { padding: 16px }
 
 
 .mt-16 { margin-top: 16px }
@@ -70,7 +60,7 @@ p {
 .mb-16 { margin-bottom: 16px }
 .mb-24 { margin-bottom: 24px }
 
-.m-auto { margin: auto }
+.m-auto { margin: auto 0; }
 
 .icon {
   width: 24px;
