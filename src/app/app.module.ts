@@ -9,22 +9,26 @@ import { SmallButtonModule } from './components/small-button/small-button.module
 import { ButtonModule } from './components/button/button.module';
 import { DropdownModule } from './components/dropdown/dropdown.module';
 import { CardModule } from './components/card/card.module';
+import { FooterModule } from "./core/components/footer/footer.module";
+import { HeaderModule } from './core/components/header/header.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    CardModule,
-    DrawerModule,
-    DropdownModule,
-    ButtonModule,
-    SearchInputModule,
-    SmallButtonModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        CardModule,
+        DrawerModule,
+        DropdownModule,
+        ButtonModule,
+        SearchInputModule,
+        SmallButtonModule,
+        HeaderModule,
+        FooterModule
+    ]
 })
 export class AppModule { }
