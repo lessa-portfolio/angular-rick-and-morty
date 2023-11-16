@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header.component';
-import { SearchInputModule } from 'src/app/components/search-input/search-input.module';
-import { SmallButtonModule } from 'src/app/components/small-button/small-button.module';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 @NgModule({
   declarations: [
@@ -10,8 +9,7 @@ import { SmallButtonModule } from 'src/app/components/small-button/small-button.
   ],
   imports: [
     CommonModule,
-    SmallButtonModule,
-    SearchInputModule
+    ComponentsModule
   ],
   exports: [
     HeaderComponent

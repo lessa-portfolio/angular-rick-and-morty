@@ -8,12 +8,15 @@
     </div>
 
     <div class="card-container" *ngFor="let character of (characters$ | async)">
-      <app-card class="d-block w-100" [caracter]="character"></app-card>
+      <rm-card class="d-block w-100" [caracter]="character"></rm-card>
     </div>
 
     <div class="d-flex d-flex-center mt-16 mb-24 w-100">
-      <app-button *ngIf="(info$ | async)?.next !== null" class="btn-load-more w-100" (click)="clickOnLoadMoreButton()"
-      >load more cards</app-button>
+      <rm-button
+        *ngIf="(info$ | async)?.next !== null"
+        class="btn-load-more w-100"
+        (click)="clickOnLoadMoreButton()"
+      >load more cards</rm-button>
     </div>
   </section>
 </div>

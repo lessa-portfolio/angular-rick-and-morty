@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from './button.component';
+import { FilterComponent } from './filter.component';
+
+
 
 @NgModule({
   declarations: [
-    ButtonComponent
+    FilterComponent
   ],
   imports: [
     CommonModule
-  ],
-  exports: [
-    ButtonComponent
   ]
 })
-export class ButtonModule { }
+export class FilterModule { }

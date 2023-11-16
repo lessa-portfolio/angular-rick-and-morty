@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer.component';
-import { SmallButtonModule } from 'src/app/components/small-button/small-button.module';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +9,7 @@ import { SmallButtonModule } from 'src/app/components/small-button/small-button.
   ],
   imports: [
     CommonModule,
-    SmallButtonModule
+    ComponentsModule
   ],
   exports: [
     FooterComponent
