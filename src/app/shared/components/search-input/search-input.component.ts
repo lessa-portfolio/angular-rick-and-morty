@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime, tap } from 'rxjs';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-search-input',

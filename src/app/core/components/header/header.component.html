@@ -1,0 +1,17 @@
+<header class="w-100">
+    <div class="d-flex d-flex-center w-100">
+        <img class="header__logo w-100" src="assets/logo.png" alt="logo rick and morty">
+    </div>
+
+    <div class="d-flex d-flex-center w-100 filters-bar">
+        <div class="d-flex d-flex-center w-100" [ngClass]="{ 'filters-bar__fixed': isFixed }">
+        <div class="d-flex d-flex-center w-100 p-16 gap-16 filters-bar__content">
+            <img class="filters-bar__logo" src="assets/logo.png" alt="logo rick and morty">
+            <app-search-input (searchBy)="handleSearchInput($event)" class="w-100"></app-search-input>
+            <app-small-button>
+            <img class="icon" src="assets/icons/filter.svg" alt="filter icon">
+            </app-small-button>
+        </div>
+        </div>
+    </div>
+</header>

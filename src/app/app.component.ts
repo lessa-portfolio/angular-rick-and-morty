@@ -1,9 +1,7 @@
-import { Observable } from 'rxjs';
-import { Info, Result } from './interfaces/caracters.interfaces';
+import { Component, HostListener, ElementRef } from '@angular/core';
 import { RickAndMortyService } from './services/rick-and-morty.service';
-import { Component } from '@angular/core';
-import { newFilter } from './shared/filter.factory';
-import { Filter } from './interfaces/filters.interface';
+import { Info, Result } from './interfaces/caracters.interfaces';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,22 +9,18 @@ import { Filter } from './interfaces/filters.interface';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public filters: Filter = newFilter();
-
   public info$: Observable<Info>;
   public characters$: Observable<Result[]>;
 
-  constructor(private rickAndMortyService: RickAndMortyService) {
+  constructor(
+    private rickAndMortyService: RickAndMortyService,
+    private elementRef: ElementRef
+  ) {
     this.info$ = this.rickAndMortyService.info$;
     this.characters$ = this.rickAndMortyService.results$;
   }
 
   public clickOnLoadMoreButton() {
     this.rickAndMortyService.loadMoreCharacteres();
-  }
-
-  public handleSearchInput(value: string) {
-    this.rickAndMortyService.gender = ['unknown'];
-    this.rickAndMortyService.name = [value];
   }
 }

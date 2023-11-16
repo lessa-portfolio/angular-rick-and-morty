@@ -1,0 +1,59 @@
+header {
+  height: 240px;
+
+  .header__logo {
+    height: 160px;
+    max-width: 285px;
+  }
+
+  .filters-bar {
+    height: 80px;
+
+    &__fixed {
+      background-image: url('../assets/universe.png');
+      box-shadow: 0px 0px 8px 0px #4E823A;
+      height: 80px;
+
+      position: fixed;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+    }
+
+    &__content {
+      transition: top 0.5s ease-in;
+    }
+
+    &__logo { display: none }
+  }
+}
+
+// Responsive for Tablets and Desktops/Laptops (not mobile)
+@media screen and (min-width: 768px) {
+  .filters-bar {
+    width: 100%;
+
+    app-search-input { max-width: 540px }
+
+    &__fixed {
+      top: 0 !important;
+      bottom: auto !important;
+      z-index: 999;
+
+      .filters-bar__logo {
+        display: block;
+        height: 48px;
+      }
+
+      .filters-bar__content {
+        justify-content: space-between;
+        max-width: 960px;
+        padding: 12px 16px;
+      }
+
+      app-search-input { max-width: 400px }
+    }
+  }
+}
