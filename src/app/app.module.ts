@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FooterModule } from "./core/components/footer/footer.module";
 import { HeaderModule } from './core/components/header/header.module';
-import { ComponentsModule } from './shared/components/components.module';
+import { SharedComponentsModule } from './shared/components/shared-components.module';
 
 @NgModule({
   declarations: [
@@ -13,10 +13,10 @@ import { ComponentsModule } from './shared/components/components.module';
   ],
   imports: [
     BrowserModule,
-    ComponentsModule,
     HttpClientModule,
     HeaderModule,
-    FooterModule
+    FooterModule,
+    SharedComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
