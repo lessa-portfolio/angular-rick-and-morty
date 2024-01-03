@@ -1,0 +1,11 @@
+<footer class="d-flex d-flex-center d-flex-column w-100 gap-16">
+  <div class="d-flex d-flex-space-between w-100 contact">
+    <a *ngFor="let button of buttonList" [href]="button.url" target="_blank">
+      <app-small-button>
+        <img class="icon" [src]="button.icon" [alt]="button.name">
+      </app-small-button>
+    </a>
+  </div>
+
+  <span class="contact__author">created by: <a href="https://www.instagram.com/lucas.lessa14/" target="_blank">@lucas.lessa14</a></span>
+</footer>

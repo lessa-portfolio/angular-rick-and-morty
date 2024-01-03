@@ -12,8 +12,6 @@ export class AppComponent {
   public info$: Observable<Info>;
   public characters$: Observable<Result[]>;
 
-  public isFixed: boolean = false;
-
   constructor(
     private rickAndMortyService: RickAndMortyService,
     private elementRef: ElementRef
@@ -24,24 +22,5 @@ export class AppComponent {
 
   public clickOnLoadMoreButton() {
     this.rickAndMortyService.loadMoreCharacteres();
-  }
-
-  public handleSearchInput(value: string) {
-    this.rickAndMortyService.name = [value];
-  }
-
-  @HostListener('window:scroll')
-  onWindowScroll() {
-    this.checkScrollPosition();
-  }
-
-  checkScrollPosition() {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-
-    if (scrollTop > 240) {
-      this.isFixed = true;
-    } else {
-      this.isFixed = false;
-    }
   }
 }
