@@ -27,4 +27,4 @@ import { ReactiveFormsModule } from '@angular/forms';
     CardComponent
   ]
 })
-export class ComponentsModule { }
+export class SharedComponentsModule { }
