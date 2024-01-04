@@ -97,12 +97,6 @@
             ],
             "scripts": []
           }
-        },
-        "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
-          "options": {
-            "baseHref": "/angular-rick-and-morty/"
-          }
         }
       }
     }
