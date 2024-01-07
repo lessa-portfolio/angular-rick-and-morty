@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Result } from '../../../interfaces/caracters.interfaces';
+import { Result } from '../../../core/models/caracters.interfaces';
 
 @Component({
   selector: 'rm-card',

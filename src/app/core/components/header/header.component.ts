@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
-import { RickAndMortyService } from '../../../services/rick-and-morty.service';
+import { RickAndMortyService } from '../../services/rick-and-morty.service';
 import { SearchInputComponent } from '../../../shared/components/search-input/search-input.component';
 import { SmallButtonComponent } from '../../../shared/components/small-button/small-button.component';
 

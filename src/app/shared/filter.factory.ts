@@ -1,5 +1,5 @@
-import { Info } from '../interfaces/caracters.interfaces';
-import { Filter } from './../interfaces/filters.interface';
+import { Info } from '../core/models/caracters.interfaces';
+import { Filter } from '../core/models/filters.interface';
 
 export function newFilter(): Filter {
   return {

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, catchError, map, throwError } from 'rxjs';
-import { Filter } from '../interfaces/filters.interface';
-import { CaractersAPIResponse } from '../interfaces/caracters.interfaces';
-import { newFilter } from '../shared/filter.factory';
-import { Character } from '../shared/models/character.model';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
+
+import { CaractersAPIResponse } from '../models/caracters.interfaces';
+import { newFilter } from '../../shared/filter.factory';
+import { Character } from '../models/character.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,10 +34,10 @@ export class BackendService {
     }
 
     return this.http.get<CaractersAPIResponse>(this.URL, { params: params })
-      // .pipe(
-      //   catchError(this.handleError),
+      .pipe(
+        catchError(this.handleError),
+      );
       //   map(this.jsonDataToCharacters)
-      // );
   }
 
   private jsonDataToCharacters(jsonData: any[]): Character[] {
@@ -72,11 +72,17 @@ export class BackendService {
 
     if(!nextUrl) return this.http.get<CaractersAPIResponse>(this.URL, { params: params });
 
-    return this.http.get<CaractersAPIResponse>(nextUrl, { params: params });
+    return this.http.get<CaractersAPIResponse>(nextUrl, { params: params })
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-  private handleError(error: any): Observable<any> {
-    console.error(error);
-    return throwError(error);
+  private handleError(error: HttpErrorResponse): Observable<any> {
+    if (error.status === 0) {
+      console.error('An error occurred:', error.error);
+    }
+    console.error(`Backend returned code ${error.status}, body was: `, error.error);
+    return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 }

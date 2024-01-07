@@ -1,9 +1,9 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { BackendService } from './backend.service';
 import { Injectable } from '@angular/core';
-import { Info, Result } from '../interfaces/caracters.interfaces';
-import { newFilter, newInfo } from '../shared/filter.factory';
-import { Filter } from '../interfaces/filters.interface';
+import { Info, Result } from '../models/caracters.interfaces';
+import { newFilter, newInfo } from '../../shared/filter.factory';
+import { Filter } from '../models/filters.interface';
 
 @Injectable({
   providedIn: 'root'
