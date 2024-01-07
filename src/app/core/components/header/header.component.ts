@@ -1,8 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
-import { RickAndMortyService } from 'src/app/services/rick-and-morty.service';
+import { RickAndMortyService } from '../../../services/rick-and-morty.service';
+import { SearchInputComponent } from '../../../shared/components/search-input/search-input.component';
+import { SmallButtonComponent } from '../../../shared/components/small-button/small-button.component';
 
 @Component({
   selector: 'rm-header',
+  standalone: true,
+  imports: [
+    CommonModule,
+    SmallButtonComponent,
+    SearchInputComponent
+  ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

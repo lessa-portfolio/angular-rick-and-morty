@@ -1,7 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { SmallButtonComponent } from '../../../shared/components/small-button/small-button.component';
 
 @Component({
   selector: 'rm-footer',
+  standalone: true,
+  imports: [
+    CommonModule,
+    SmallButtonComponent
+  ],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })

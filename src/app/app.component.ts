@@ -1,9 +1,14 @@
 import { Component, ElementRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
+
 import { RickAndMortyService } from './services/rick-and-morty.service';
 import { Info, Result } from './interfaces/caracters.interfaces';
-import { Observable } from 'rxjs';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './core/components/header/header.component';
+import { FooterComponent } from './core/components/footer/footer.component';
+
+import { CardComponent } from './shared/components/card/card.component';
+import { ButtonComponent } from './shared/components/button/button.component';
 
 // @ts-ignore
 @Component({
@@ -11,7 +16,10 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [
     CommonModule,
-    RouterOutlet
+    HeaderComponent,
+    FooterComponent,
+    CardComponent,
+    ButtonComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
