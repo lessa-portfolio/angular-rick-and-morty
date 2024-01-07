@@ -1,27 +1,59 @@
-# AngularRickAndMorty
+<h1 style="color: #333" align="center">Rick and Morty</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+[![Node Version](https://img.shields.io/badge/Node-v20-green.svg)](https://nodejs.org/)
+[![Angular Version](https://img.shields.io/badge/Angular-v17-red.svg)](https://angular.io/)
+[![NPM Version](https://img.shields.io/badge/NPM-v10-blue.svg)](https://www.npmjs.com/)
+[![TypeScript Version](https://img.shields.io/badge/TypeScript-v5.2-blue.svg)](https://www.typescriptlang.org/)
+[![RxJS Version](https://img.shields.io/badge/RxJS-v7.8.1-blue.svg)](https://rxjs.dev/)
 
-## Development server
+![Universe Rick and Morty](./images/rick-and-morty.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 📋 Project
 
-## Code scaffolding
+An innovative project that consumes the Rick and Morty public API to display character data in a universe-themed design.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🖥️ Technologies
 
-## Build
+The project was developed using the following technologies:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- <a href="https://nodejs.org/en/">Node.js</a>
+- <a href="https://angular.io/">Angular</a>
+- <a href="https://www.typescriptlang.org/">TypeScript</a>
+- <a href="https://karma-runner.github.io/latest/index.html">Karma</a>
+- <a href="https://jasmine.github.io/">Jasmine</a>
+- <a href="https://rxjs.dev/">RxJS</a>
 
-## Running unit tests
+## 🚀 How to Run
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Make sure you have Node.js and npm installed on your machine. Then follow the steps below:
 
-## Running end-to-end tests
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/universe-rick-and-morty.git
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. Navigate to the project directory:
+   ```bash
+   cd universe-rick-and-morty
+   ```
 
-## Further help
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+4. Start the application:
+   ```bash
+   npm run start
+   ```
+5. Open your browser and go to http://localhost:4200/ to view the project.
+
+## 💭 Resources
+- Angular CLI: https://angular.io/cli
+- Rick and Morty API: https://rickandmortyapi.com/
+
+## ☕ Contributions
+Contributions are welcome! Feel free to open issues or pull requests.
+
+## 🔒 License
+This project is licensed under the MIT License.

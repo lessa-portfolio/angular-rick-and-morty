@@ -1,10 +1,26 @@
-import { Component, HostListener, ElementRef } from '@angular/core';
-import { RickAndMortyService } from './services/rick-and-morty.service';
-import { Info, Result } from './interfaces/caracters.interfaces';
+import { Component, ElementRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 
+import { RickAndMortyService } from './services/rick-and-morty.service';
+import { Info, Result } from './interfaces/caracters.interfaces';
+import { HeaderComponent } from './core/components/header/header.component';
+import { FooterComponent } from './core/components/footer/footer.component';
+
+import { CardComponent } from './shared/components/card/card.component';
+import { ButtonComponent } from './shared/components/button/button.component';
+
+// @ts-ignore
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [
+    CommonModule,
+    HeaderComponent,
+    FooterComponent,
+    CardComponent,
+    ButtonComponent
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
