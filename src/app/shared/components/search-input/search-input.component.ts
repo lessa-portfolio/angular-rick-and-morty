@@ -4,7 +4,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 
 @Component({
-  selector: 'app-search-input',
+  selector: 'rm-search-input',
   standalone: true,
   imports: [
     CommonModule,

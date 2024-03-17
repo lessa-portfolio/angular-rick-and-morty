@@ -9,6 +9,7 @@ import { FooterComponent } from './core/components/footer/footer.component';
 
 import { CardComponent } from './shared/components/card/card.component';
 import { ButtonComponent } from './shared/components/button/button.component';
+import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,8 @@ import { ButtonComponent } from './shared/components/button/button.component';
     HeaderComponent,
     FooterComponent,
     CardComponent,
-    ButtonComponent
+    ButtonComponent,
+    DropdownComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
