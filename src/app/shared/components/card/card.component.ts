@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Result } from '../../../core/models/caracters.interfaces';
+import { Character } from '../../../core/models/caracters.interfaces';
 
 @Component({
   selector: 'rm-card',
@@ -10,5 +10,5 @@ import { Result } from '../../../core/models/caracters.interfaces';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-  @Input() caracter!: Result;
+  @Input() caracter!: Character;
 }

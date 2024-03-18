@@ -1,4 +1,42 @@
-<rm-header></rm-header>
+<div id="main-container">
+  <rm-header></rm-header>
+
+  <div class="d-flex d-flex-center d-flex-column w-100 m-auto">
+    <section class="d-flex d-flex-center d-flex-wrap gap-16 w-100">
+      <div class="d-flex d-flex-space-between w-100">
+        <p>results:</p>
+        <p>total: {{ (info$ | async)?.count }}</p>
+      </div>
+
+      <div
+        class="d-flex d-flex-center d-flex-wrap gap-16 w-100"
+        *ngIf="(characters$ | async)?.length; else loadingCharacters"
+      >
+        <div
+          class="card-container w-100"
+          *ngFor="let character of characters$ | async"
+        >
+          <rm-card class="d-block w-100" [caracter]="character"></rm-card>
+        </div>
+      </div>
+
+      <ng-template #loadingCharacters>
+        <span class="loading-items">loading items</span>
+      </ng-template>
+
+      <div class="d-flex d-flex-center mt-16 mb-24 w-100">
+        <rm-button
+          *ngIf="(info$ | async)?.next !== null"
+          class="btn-load-more w-100"
+          (click)="clickOnLoadMoreButton()"
+          >load more cards</rm-button
+        >
+      </div>
+    </section>
+  </div>
+
+  <rm-footer></rm-footer>
+</div>
 
 <!-- <rm-dropdown
   [placeholder]="'Filter by status'"
@@ -23,28 +61,5 @@
 ]"
 [selectedOption]="''"
 [allowUnselect]="true" -->
-
-<div id="main-container" class="d-flex d-flex-center d-flex-column w-100 m-auto">
-  <section class="d-flex d-flex-center d-flex-wrap gap-16">
-    <div class="d-flex d-flex-space-between w-100">
-      <p>results:</p>
-      <p>total: {{ (info$ | async)?.count }}</p>
-    </div>
-
-    <div class="card-container" *ngFor="let character of (characters$ | async)">
-      <rm-card class="d-block w-100" [caracter]="character"></rm-card>
-    </div>
-
-    <div class="d-flex d-flex-center mt-16 mb-24 w-100">
-      <rm-button
-        *ngIf="(info$ | async)?.next !== null"
-        class="btn-load-more w-100"
-        (click)="clickOnLoadMoreButton()"
-      >load more cards</rm-button>
-    </div>
-  </section>
-</div>
-
-<rm-footer></rm-footer>
 
 <!-- <rm-drawer></rm-drawer> -->

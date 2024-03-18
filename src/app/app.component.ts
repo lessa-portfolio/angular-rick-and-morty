@@ -1,9 +1,9 @@
-import { Component, ElementRef } from '@angular/core';
+import { CharacterService } from './core/services/character.service';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 
-import { RickAndMortyService } from './core/services/rick-and-morty.service';
-import { Info, Result } from './core/models/caracters.interfaces';
+import { Character, Info } from './core/models/caracters.interfaces';
 import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 
@@ -20,21 +20,30 @@ import { DropdownComponent } from './shared/components/dropdown/dropdown.compone
     FooterComponent,
     CardComponent,
     ButtonComponent,
-    DropdownComponent
+    DropdownComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public info$: Observable<Info>;
-  public characters$: Observable<Result[]>;
+  info$: Observable<Info>;
+  characters$: Observable<Character[]>;
 
-  constructor(private rickAndMortyService: RickAndMortyService) {
-    this.info$ = this.rickAndMortyService.info$;
-    this.characters$ = this.rickAndMortyService.results$;
+  constructor(private characterService: CharacterService) {
+    this.characters$ = this.characterService.characters$;
+    this.info$ = this.characterService.info$;
+
+    this.loadCharacters();
+  }
+
+  loadCharacters() {
+    this.characterService.fetchCharacters().subscribe({
+      next: () => console.log('Personagens carregados com sucesso!'),
+      error: (error) => console.error('Erro ao carregar personagens:', error),
+    });
   }
 
   public clickOnLoadMoreButton() {
-    this.rickAndMortyService.loadMoreCharacteres();
+    console.log('carreguei mais personagens');
   }
 }

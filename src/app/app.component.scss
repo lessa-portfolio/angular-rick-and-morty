@@ -1,5 +1,9 @@
 .card-container {
   width: calc(50% - 8px);
+
+  .card-content {
+    width: 100%;
+  }
 }
 
 // Responsive for Tablets and Desktops/Laptops (not mobile)
@@ -17,4 +21,8 @@
 
 .btn-load-more {
   max-width: 440px;
+}
+
+.loading-items {
+  color: white;
 }

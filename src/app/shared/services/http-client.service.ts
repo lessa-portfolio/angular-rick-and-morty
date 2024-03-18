@@ -1,6 +1,6 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
-import { Observable, catchError, map, throwError } from 'rxjs';
+import { Observable, catchError, map, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,21 +17,18 @@ export abstract class HttpClientService<TResource> {
     this.http = injector.get(HttpClient);
   }
 
-  // getAllResources(options?: IOptions): Observable<TResource[]> {
-  //   let params = convertParamsToHttpParams(options?.params);
+  protected getResource(options?: any): Observable<TResource> {
+    const headers = new HttpHeaders();
+    // let params = convertParamsToHttpParams(options?.params);
 
-  //   return this.http.get<TResource[]>(this.apiPath, { params }).pipe(
-  //     map(this.jsonDataToResources.bind(this)),
-  //     catchError(this.handleError)
-  //   );
-  // }
+    return this.http.get<TResource[]>(this.apiPath).pipe(
+      map(this.jsonDataToResource.bind(this)),
+      catchError(this.handleError)
+    );
+  }
 
   protected jsonDataToResources(jsonData: any[]): TResource[] {
-    const resources: TResource[] = [];
-
-    jsonData.forEach(element => resources.push(this.jsonDataToResourceFn(element)));
-
-    return resources;
+    return jsonData.map(this.jsonDataToResourceFn);
   }
 
   protected jsonDataToResource(jsonData: any): TResource {

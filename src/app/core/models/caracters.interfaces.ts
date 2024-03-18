@@ -1,10 +1,10 @@
 export class CaractersAPIResponse {
-  constructor(public info: Info, public results: Result[]) {}
+  constructor(public info: Info, public results: Character[]) {}
 
   static fromJson(jsonData: any): CaractersAPIResponse {
     return new CaractersAPIResponse(
       Info.fromJson(jsonData.info),
-      jsonData.results.forEach((result: any) => Result.fromJson(result))
+      jsonData.results.map((result: any) => Character.fromJson(result))
     );
   }
 }
@@ -19,15 +19,15 @@ export class Info {
 
   static fromJson(jsonData: any): Info {
     return new Info(
-      jsonData.count,
-      jsonData.pages,
+      jsonData.count || 0,
+      jsonData.pages || 0,
       jsonData.next || null,
       jsonData.prev || null
     );
   }
 }
 
-export class Result {
+export class Character {
   constructor(
     public id: number,
     public name: string,
@@ -43,8 +43,8 @@ export class Result {
     public created: Date
   ) {}
 
-  static fromJson(jsonData: any): Result {
-    return new Result(
+  static fromJson(jsonData: any): Character {
+    return new Character(
       jsonData.id,
       jsonData.name || '',
       jsonData.status,
