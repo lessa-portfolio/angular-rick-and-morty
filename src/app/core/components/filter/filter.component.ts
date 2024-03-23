@@ -4,10 +4,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-filter',
   standalone: true,
-  imports: [ CommonModule ],
+  imports: [CommonModule],
   templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss']
+  styleUrls: ['./filter.component.scss'],
 })
-export class FilterComponent {
-
-}
+export class FilterComponent {}

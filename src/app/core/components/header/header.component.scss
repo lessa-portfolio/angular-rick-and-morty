@@ -10,8 +10,8 @@ header {
     height: 80px;
 
     &__fixed {
-      background-image: url('../../../../assets/universe.png');
-      box-shadow: 0px 0px 8px 0px #4E823A;
+      background-image: url("../../../../assets/universe.png");
+      box-shadow: 0px 0px 8px 0px #4e823a;
       height: 80px;
 
       position: fixed;
@@ -26,7 +26,9 @@ header {
       transition: top 0.5s ease-in;
     }
 
-    &__logo { display: none }
+    &__logo {
+      display: none;
+    }
   }
 }
 
@@ -35,7 +37,9 @@ header {
   .filters-bar {
     width: 100%;
 
-    app-search-input { max-width: 540px }
+    app-search-input {
+      max-width: 540px;
+    }
 
     &__fixed {
       top: 0 !important;
@@ -53,7 +57,9 @@ header {
         padding: 12px 16px;
       }
 
-      app-search-input { max-width: 400px }
+      app-search-input {
+        max-width: 400px;
+      }
     }
   }
 }

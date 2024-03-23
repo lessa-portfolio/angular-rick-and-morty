@@ -8,7 +8,7 @@ describe('SearchInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SearchInputComponent]
+      declarations: [SearchInputComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SearchInputComponent);

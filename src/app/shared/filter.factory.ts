@@ -3,14 +3,14 @@ import { Filter } from '../core/models/filters.interface';
 
 export function newFilter(): Filter {
   return {
-    name:   [],
+    name: [],
     status: [],
-    species:[],
-    type:   [],
+    species: [],
+    type: [],
     gender: [],
     origin: [],
-    location: []
-  }
+    location: [],
+  };
 }
 
 export function newInfo(): Info {
@@ -19,5 +19,5 @@ export function newInfo(): Info {
     pages: 0,
     next: null,
     prev: null,
-  }
+  };
 }

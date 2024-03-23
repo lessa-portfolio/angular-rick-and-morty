@@ -5,10 +5,12 @@ footer {
     max-width: 288px;
 
     &__author {
-      color: #CEE5AD;
+      color: #cee5ad;
       font-size: 12px;
 
-      a { color: #CEE5AD }
+      a {
+        color: #cee5ad;
+      }
     }
   }
 }

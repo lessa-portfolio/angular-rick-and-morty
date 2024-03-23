@@ -8,8 +8,14 @@
 
   &-primary {
     color: #071618;
-    border: 2px solid #40945D;
-    box-shadow: 0px 0px 8px 0px #4E823A;
-    background: linear-gradient(142deg, #8ABF77 0%, #BECF6B 46.05%, #63BC44 100%, #8ABF77 100%);
+    border: 2px solid #40945d;
+    box-shadow: 0px 0px 8px 0px #4e823a;
+    background: linear-gradient(
+      142deg,
+      #8abf77 0%,
+      #becf6b 46.05%,
+      #63bc44 100%,
+      #8abf77 100%
+    );
   }
 }

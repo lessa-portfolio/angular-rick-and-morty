@@ -5,9 +5,9 @@ import { Character } from '../../../core/models/caracters.interfaces';
 @Component({
   selector: 'rm-card',
   standalone: true,
-  imports: [ CommonModule ],
+  imports: [CommonModule],
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
   @Input() caracter!: Character;

@@ -8,9 +8,13 @@
 
 // Responsive for Tablets and Desktops/Laptops (not mobile)
 @media screen and (min-width: 768px) {
-  section { gap: 32px }
+  section {
+    gap: 32px;
+  }
 
-  .card-container { width: calc(25% - 24px) }
+  .card-container {
+    width: calc(25% - 24px);
+  }
 }
 
 #main-container {

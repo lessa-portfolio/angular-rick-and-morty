@@ -5,12 +5,11 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'rm-dropdown',
   standalone: true,
-  imports: [ CommonModule, FormsModule ],
+  imports: [CommonModule, FormsModule],
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss']
+  styleUrls: ['./dropdown.component.scss'],
 })
 export class DropdownComponent {
-
   // @Input() id: string = '';
   // @Input() name: string = '';
   // @Input() options: { value: string, label: string }[] = [];

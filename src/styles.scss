@@ -1,12 +1,12 @@
 * {
-  font-family: 'Imprima', sans-serif;
+  font-family: "Imprima", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  background-image: url('assets/universe.png');
+  background-image: url("assets/universe.png");
   background-size: auto;
   background-position: center;
   background-repeat: repeat;
@@ -26,45 +26,85 @@ p {
   color: #fff;
 }
 
-.d-block { display: block }
-.d-none { display: none }
-.d-flex { display: flex }
+.d-block {
+  display: block;
+}
+.d-none {
+  display: none;
+}
+.d-flex {
+  display: flex;
+}
 
 .d-flex-center {
   align-items: center;
   justify-content: center;
 }
 
-.d-flex-column { flex-direction: column }
-.d-flex-wrap { flex-wrap: wrap }
+.d-flex-column {
+  flex-direction: column;
+}
+.d-flex-wrap {
+  flex-wrap: wrap;
+}
 
-.d-flex-space-between { justify-content: space-between }
+.d-flex-space-between {
+  justify-content: space-between;
+}
 
+.w-50 {
+  width: 50%;
+}
+.w-100 {
+  width: 100%;
+}
 
-.w-50 { width: 50% }
-.w-100 { width: 100% }
+.gap-4 {
+  gap: 4px;
+}
+.gap-8 {
+  gap: 8px;
+}
+.gap-16 {
+  gap: 16px;
+}
+.gap-24 {
+  gap: 24px;
+}
+.gap-32 {
+  gap: 32px;
+}
 
-.gap-4 { gap: 4px }
-.gap-8 { gap: 8px }
-.gap-16 { gap: 16px }
-.gap-24 { gap: 24px }
-.gap-32 { gap: 32px }
+.p-12 {
+  padding: 12px;
+}
+.p-16 {
+  padding: 16px;
+}
 
-.p-12 { padding: 12px }
-.p-16 { padding: 16px }
+.mt-16 {
+  margin-top: 16px;
+}
+.mt-24 {
+  margin-top: 24px;
+}
 
+.mb-16 {
+  margin-bottom: 16px;
+}
+.mb-24 {
+  margin-bottom: 24px;
+}
 
-.mt-16 { margin-top: 16px }
-.mt-24 { margin-top: 24px }
-
-.mb-16 { margin-bottom: 16px }
-.mb-24 { margin-bottom: 24px }
-
-.m-auto { margin: auto 0; }
+.m-auto {
+  margin: auto 0;
+}
 
 .icon {
   width: 24px;
   height: 24px;
 }
 
-.text-center { text-align: center }
+.text-center {
+  text-align: center;
+}

@@ -4,10 +4,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'rm-button',
   standalone: true,
-  imports: [ CommonModule ],
+  imports: [CommonModule],
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  styleUrls: ['./button.component.scss'],
 })
-export class ButtonComponent {
-
-}
+export class ButtonComponent {}

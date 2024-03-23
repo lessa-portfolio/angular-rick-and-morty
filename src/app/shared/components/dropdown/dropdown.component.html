@@ -2,12 +2,30 @@
   <div class="label">{{ label | titlecase }}:</div>
   <div class="selected-option" (click)="toggleDropdown()">
     {{ selectedOption || placeholder }}
-    <img class="icon" src="assets/icons/chevron-down.svg" alt="dropdown icon">
+    <img class="icon" src="assets/icons/chevron-down.svg" alt="dropdown icon" />
   </div>
 
-  <div class="options" [ngClass]="{'fade-transition': isDropdownOpen, 'fade-transition-hidden': !isDropdownOpen}">
-    <div class="option" *ngIf="allowUnselect || true" (click)="selectOption(null)">Unselect</div>
+  <div
+    class="options"
+    [ngClass]="{
+      'fade-transition': isDropdownOpen,
+      'fade-transition-hidden': !isDropdownOpen
+    }"
+  >
+    <div
+      class="option"
+      *ngIf="allowUnselect || true"
+      (click)="selectOption(null)"
+    >
+      Unselect
+    </div>
     <div class="divider"></div>
-    <div class="option" *ngFor="let option of options" (click)="selectOption(option)">{{ option }}</div>
+    <div
+      class="option"
+      *ngFor="let option of options"
+      (click)="selectOption(option)"
+    >
+      {{ option }}
+    </div>
   </div>
 </div>

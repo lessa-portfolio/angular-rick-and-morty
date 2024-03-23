@@ -4,10 +4,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'rm-small-button',
   standalone: true,
-  imports: [ CommonModule ],
+  imports: [CommonModule],
   templateUrl: './small-button.component.html',
-  styleUrls: ['./small-button.component.scss']
+  styleUrls: ['./small-button.component.scss'],
 })
-export class SmallButtonComponent {
-
-}
+export class SmallButtonComponent {}

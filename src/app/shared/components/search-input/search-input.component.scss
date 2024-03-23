@@ -8,12 +8,14 @@
     width: 100%;
     padding-left: 50px;
     border-radius: 60px;
-    border: 1px solid #63BC44;
-    background: rgba(18, 33, 20, 0.50);
-    box-shadow: 0px 0px 8px 0px #4E823A;
+    border: 1px solid #63bc44;
+    background: rgba(18, 33, 20, 0.5);
+    box-shadow: 0px 0px 8px 0px #4e823a;
   }
 
-  input::placeholder { color: #CEE5AD }
+  input::placeholder {
+    color: #cee5ad;
+  }
 
   .search-icon {
     position: absolute;
@@ -22,4 +24,3 @@
     transform: translateY(-50%);
   }
 }
-

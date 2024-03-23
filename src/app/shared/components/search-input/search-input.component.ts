@@ -6,12 +6,9 @@ import { debounceTime } from 'rxjs';
 @Component({
   selector: 'rm-search-input',
   standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule
-  ],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './search-input.component.html',
-  styleUrls: ['./search-input.component.scss']
+  styleUrls: ['./search-input.component.scss'],
 })
 export class SearchInputComponent {
   @Output() searchBy = new EventEmitter<string>();
@@ -19,9 +16,9 @@ export class SearchInputComponent {
   public search = new FormControl();
 
   constructor() {
-    this.search.valueChanges.pipe(
-      debounceTime(500)
-    ).subscribe(value => this.newSeach(value));
+    this.search.valueChanges
+      .pipe(debounceTime(500))
+      .subscribe((value) => this.newSeach(value));
   }
 
   private newSeach(value: string): void {

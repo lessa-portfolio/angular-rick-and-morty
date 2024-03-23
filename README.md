@@ -28,16 +28,19 @@ The project was developed using the following technologies:
 Make sure you have Node.js and npm installed on your machine. Then follow the steps below:
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/your-username/universe-rick-and-morty.git
    ```
 
 2. Navigate to the project directory:
+
    ```bash
    cd universe-rick-and-morty
    ```
 
 3. Install dependencies:
+
    ```bash
    npm install
    ```
@@ -49,11 +52,14 @@ Make sure you have Node.js and npm installed on your machine. Then follow the st
 5. Open your browser and go to http://localhost:4200/ to view the project.
 
 ## 💭 Resources
+
 - Angular CLI: https://angular.io/cli
 - Rick and Morty API: https://rickandmortyapi.com/
 
 ## ☕ Contributions
+
 Contributions are welcome! Feel free to open issues or pull requests.
 
 ## 🔒 License
+
 This project is licensed under the MIT License.

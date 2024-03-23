@@ -31,6 +31,7 @@ export class AppComponent {
 
   constructor(private characterService: CharacterService) {
     this.characters$ = this.characterService.characters$;
+
     this.info$ = this.characterService.info$;
 
     this.loadCharacters();
