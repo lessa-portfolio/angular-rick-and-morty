@@ -1,12 +1,13 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
-import { Observable, catchError, map, tap, throwError } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
+import { IOptions } from '../models/http-client.model';
+import { convertParamsToHttpParams } from '../utils/convertParamsToHttpParams';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export abstract class HttpClientService<TResource> {
-
   protected http: HttpClient;
 
   constructor(
@@ -17,14 +18,15 @@ export abstract class HttpClientService<TResource> {
     this.http = injector.get(HttpClient);
   }
 
-  protected getResource(options?: any): Observable<TResource> {
-    const headers = new HttpHeaders();
-    // let params = convertParamsToHttpParams(options?.params);
+  protected getResource(options?: IOptions): Observable<TResource> {
+    let params = convertParamsToHttpParams(options?.params);
 
-    return this.http.get<TResource[]>(this.apiPath).pipe(
-      map(this.jsonDataToResource.bind(this)),
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<TResource[]>(this.apiPath, { params })
+      .pipe(
+        map(this.jsonDataToResource.bind(this)),
+        catchError(this.handleError)
+      );
   }
 
   protected jsonDataToResources(jsonData: any[]): TResource[] {
@@ -39,9 +41,11 @@ export abstract class HttpClientService<TResource> {
     console.log(error);
 
     if (error.status === 0) {
-      console.error(`Um erro ocorreu: ${ error.error}`);
+      console.error(`Um erro ocorreu: ${error.error}`);
     }
-    console.error(`Backend error com status ${ error.status }: ${ error.error }`);
-    return throwError(() => new Error(`Por favor, tente novamente mais tarde.`));
+    console.error(`Backend error com status ${error.status}: ${error.error}`);
+    return throwError(
+      () => new Error(`Por favor, tente novamente mais tarde.`)
+    );
   }
 }
