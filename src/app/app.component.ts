@@ -37,14 +37,17 @@ export class AppComponent {
     this.loadCharacters();
   }
 
-  loadCharacters() {
-    this.characterService.fetchCharacters().subscribe({
-      next: () => console.log('Personagens carregados com sucesso!'),
-      error: (error) => console.error('Erro ao carregar personagens:', error),
+  public loadCharacters(): void {
+    this.characterService.getCharacters().subscribe({
+      next: () => console.log('Personagens iniciais carregados com sucesso!'),
+      error: (error) => console.error('Erro ao carregar personagens iniciais:', error),
     });
   }
 
-  public clickOnLoadMoreButton() {
-    console.log('carreguei mais personagens');
+  public loadMoreCharacters(): void {
+    this.characterService.loadMoreCharacters().subscribe({
+      next: () => console.log('Personagens adicionais carregados com sucesso!'),
+      error: (error) => console.error('Erro ao carregar mais personagens:', error),
+    });
   }
 }

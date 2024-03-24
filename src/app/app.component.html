@@ -28,7 +28,7 @@
         <rm-button
           *ngIf="(info$ | async)?.next !== null"
           class="btn-load-more w-100"
-          (click)="clickOnLoadMoreButton()"
+          (click)="loadMoreCharacters()"
           >load more cards</rm-button
         >
       </div>

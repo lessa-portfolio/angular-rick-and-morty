@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { SearchInputComponent } from '../../../shared/components/search-input/search-input.component';
 import { SmallButtonComponent } from '../../../shared/components/small-button/small-button.component';
+import { FilterService } from '../../services/filter.service';
 
 @Component({
   selector: 'rm-header',
@@ -13,10 +14,10 @@ import { SmallButtonComponent } from '../../../shared/components/small-button/sm
 export class HeaderComponent {
   public isFixed: boolean = false;
 
-  public handleSearchInput(value: string) {
-    console.log('typing... ', [value]);
+  constructor(private filterService: FilterService) {}
 
-    // this.rickAndMortyService.name = [value];
+  public handleSearchInput(value: string) {
+    this.filterService.setName(value);
   }
 
   @HostListener('window:scroll')

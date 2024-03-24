@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
-import { IOptions } from '../models/http-client.model';
+import { IParams } from '../models/http-client.model';
 import { convertParamsToHttpParams } from '../utils/convertParamsToHttpParams';
 
 @Injectable({
@@ -18,11 +18,11 @@ export abstract class HttpClientService<TResource> {
     this.http = injector.get(HttpClient);
   }
 
-  protected getResource(options?: IOptions): Observable<TResource> {
-    let params = convertParamsToHttpParams(options?.params);
-
+  protected getResource(params?: IParams): Observable<TResource> {
     return this.http
-      .get<TResource[]>(this.apiPath, { params })
+      .get<TResource[]>(this.apiPath, {
+        params: convertParamsToHttpParams(params),
+      })
       .pipe(
         map(this.jsonDataToResource.bind(this)),
         catchError(this.handleError)

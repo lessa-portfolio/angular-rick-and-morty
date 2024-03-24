@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable, delay, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Injectable, Injector } from '@angular/core';
 import { HttpClientService } from '../../shared/services/http-client.service';
 import {
@@ -6,6 +6,8 @@ import {
   Info,
   Character,
 } from '../models/caracters.interfaces';
+import { FilterService } from './filter.service';
+import { IFilter } from '../models/filter.interface';
 
 const CHARACTERS_API_URL = 'https://rickandmortyapi.com/api/character/';
 
@@ -16,53 +18,44 @@ export class CharacterService extends HttpClientService<CaractersAPIResponse> {
   private _infoSubject = new BehaviorSubject<Info>(Info.fromJson({}));
   private _charactersSubject = new BehaviorSubject<Character[]>([]);
 
-  private _name = new BehaviorSubject<string[]>([]);
-  private _status = new BehaviorSubject<string[]>([]);
-  private _species = new BehaviorSubject<string[]>([]);
-  private _gender = new BehaviorSubject<string[]>([]);
-  private _type = new BehaviorSubject<string[]>([]);
-
-  constructor(protected override injector: Injector) {
+  constructor(
+    protected override injector: Injector,
+    private filterService: FilterService
+  ) {
     super(CHARACTERS_API_URL, injector, CaractersAPIResponse.fromJson);
+    this.filterService.filter$.subscribe((filter) => {
+      this.getCharacters(filter).subscribe();
+    });
   }
 
-  public fetchCharacters(): Observable<CaractersAPIResponse> {
-    return this.getResource().pipe(
-      delay(1000),
+  public getCharacters(filter?: IFilter): Observable<CaractersAPIResponse> {
+    return this.getResource(filter).pipe(
       tap((response) => this.updateInfo(response.info)),
       tap((response) => this.updateCharacters(response.results))
     );
   }
 
-  // public loadMoreCharacteres() {
-  //   console.log('mais caracteres');
-  //   this.backendService.getNextPageOfCharacteres(this._info.value.next, this.getFilters()).subscribe(response => {
-  //     const currentResults = this._results.getValue();
-  //     const newResults = currentResults.concat(response.results);
+  public loadMoreCharacters(): Observable<CaractersAPIResponse> {
 
-  //     this._results.next(newResults);
-  //     this._info.next(response.info);
-  //   });
-  // }
+    let filter = this.filterService.getFilterSetted();
+    console.log('mais caracteres', filter);
 
-  public getFilters(): any {
-    return {
-      name: this._name.value,
-      status: this._status.value,
-      species: this._species.value,
-      gender: this._gender.value,
-      type: this._type.value,
-      location: [],
-      origin: [],
-    };
-  }
+    if (this._infoSubject.value.next !== null) {
+      this.filterService.nextPage();
+    }
 
-  public clearFilters(): void {
-    this._name.next([]);
-    this._status.next([]);
-    this._species.next([]);
-    this._gender.next([]);
-    this._type.next([]);
+    return this.getResource(filter).pipe(
+      tap((response) => this.updateInfo(response.info)),
+      tap((response) => {
+        const currentCharacters = this._charactersSubject.getValue();
+        console.log('currentCharacters', currentCharacters);
+
+        const allCharacters = currentCharacters.concat(response.results);
+        console.log('allCharacters', allCharacters);
+
+        this.updateCharacters(allCharacters);
+      })
+    );
   }
 
   //  ==========  getters  ==========  //
@@ -74,47 +67,6 @@ export class CharacterService extends HttpClientService<CaractersAPIResponse> {
     return this._charactersSubject.asObservable();
   }
 
-  get name$(): Observable<string[]> {
-    return this._name.asObservable();
-  }
-
-  get status$(): Observable<string[]> {
-    return this._status.asObservable();
-  }
-
-  get species$(): Observable<string[]> {
-    return this._species.asObservable();
-  }
-
-  get gender$(): Observable<string[]> {
-    return this._gender.asObservable();
-  }
-
-  get type$(): Observable<string[]> {
-    return this._type.asObservable();
-  }
-
-  //  ==========  setters  ==========  //
-  set name(values: string[]) {
-    this._name.next(values);
-  }
-
-  set status(values: string[]) {
-    this._status.next(values);
-  }
-
-  set species(values: string[]) {
-    this._species.next(values);
-  }
-
-  set gender(values: string[]) {
-    this._gender.next(values);
-  }
-
-  set type(values: string[]) {
-    this._type.next(values);
-  }
-
   private updateInfo(info: Info) {
     this._infoSubject.next(info);
   }
@@ -123,32 +75,3 @@ export class CharacterService extends HttpClientService<CaractersAPIResponse> {
     this._charactersSubject.next(characters);
   }
 }
-
-// .subscribe({
-//   next: (response) => {
-//     this._info.next(response.info)
-//     console.log(response)
-//     this._charecters.next(response.results)
-
-//     console.log(this._info.value)
-//     console.log(this._charecters.value)
-//   }
-// });
-
-// let params = new HttpParams();
-//
-// if (filter.name && filter.name.length > 0) {
-//   params = params.set('name', filter.name.join(','));
-// }
-// if (filter.status && filter.status.length > 0) {
-//   params = params.set('status', filter.status.join(','));
-// }
-// if (filter.species && filter.species.length > 0) {
-//   params = params.set('species', filter.species.join(','));
-// }
-// if (filter.type && filter.type.length > 0) {
-//   params = params.set('type', filter.type.join(','));
-// }
-// if (filter.gender && filter.gender.length > 0) {
-//   params = params.set('gender', filter.gender.join(','));
-// }
