@@ -9,9 +9,12 @@ export function convertParamsToHttpParams(
   if (params) {
     if (typeof params === 'object' && !Array.isArray(params)) {
       for (const key in params) {
-        if (params.hasOwnProperty(key)) {
-          // @ts-ignore
-          queryParams = queryParams.append(key, params[key]);
+        // if (params.hasOwnProperty(key)) {
+        if (Object.prototype.hasOwnProperty.call(params, key)) {
+          queryParams = queryParams.append(
+            key,
+            String((params as IParams)[key])
+          );
         }
       }
     } else if (params instanceof HttpParams) {

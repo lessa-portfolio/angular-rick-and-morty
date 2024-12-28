@@ -9,7 +9,6 @@ import { FooterComponent } from './core/components/footer/footer.component';
 
 import { CardComponent } from './shared/components/card/card.component';
 import { ButtonComponent } from './shared/components/button/button.component';
-import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +19,6 @@ import { DropdownComponent } from './shared/components/dropdown/dropdown.compone
     FooterComponent,
     CardComponent,
     ButtonComponent,
-    DropdownComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -40,14 +38,16 @@ export class AppComponent {
   public loadCharacters(): void {
     this.characterService.getCharacters().subscribe({
       next: () => console.log('Personagens iniciais carregados com sucesso!'),
-      error: (error) => console.error('Erro ao carregar personagens iniciais:', error),
+      error: (error) =>
+        console.error('Erro ao carregar personagens iniciais:', error),
     });
   }
 
   public loadMoreCharacters(): void {
     this.characterService.loadMoreCharacters().subscribe({
       next: () => console.log('Personagens adicionais carregados com sucesso!'),
-      error: (error) => console.error('Erro ao carregar mais personagens:', error),
+      error: (error) =>
+        console.error('Erro ao carregar mais personagens:', error),
     });
   }
 }

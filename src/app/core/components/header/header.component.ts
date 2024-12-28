@@ -12,7 +12,7 @@ import { FilterService } from '../../services/filter.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  public isFixed: boolean = false;
+  public isFixed = false;
 
   constructor(private filterService: FilterService) {}
 

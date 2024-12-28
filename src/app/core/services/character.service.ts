@@ -37,7 +37,7 @@ export class CharacterService extends HttpClientService<CaractersAPIResponse> {
 
   public loadMoreCharacters(): Observable<CaractersAPIResponse> {
 
-    let filter = this.filterService.getFilterSetted();
+    const filter = this.filterService.getFilterSetted();
     console.log('mais caracteres', filter);
 
     if (this._infoSubject.value.next !== null) {

@@ -1,6 +1,12 @@
 <div class="dropdown">
   <div class="label">{{ label | titlecase }}:</div>
-  <div class="selected-option" (click)="toggleDropdown()">
+  <div
+    class="selected-option"
+    (click)="toggleDropdown()"
+    (keydown.enter)="toggleDropdown()"
+    (keydown.space)="toggleDropdown()"
+    tabindex="0"
+  >
     {{ selectedOption || placeholder }}
     <img class="icon" src="assets/icons/chevron-down.svg" alt="dropdown icon" />
   </div>
@@ -16,6 +22,9 @@
       class="option"
       *ngIf="allowUnselect || true"
       (click)="selectOption(null)"
+      (keydown.enter)="selectOption(null)"
+      (keydown.space)="selectOption(null)"
+      tabindex="0"
     >
       Unselect
     </div>
@@ -24,6 +33,9 @@
       class="option"
       *ngFor="let option of options"
       (click)="selectOption(option)"
+      (keydown.enter)="selectOption(option)"
+      (keydown.space)="selectOption(option)"
+      tabindex="0"
     >
       {{ option }}
     </div>
